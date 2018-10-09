@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Styled 6</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        h1 {
+            font-size: 120px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ff9900;
+            background-color: #ffc300;
+            padding: 0 0 0 0;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+        }
+        #left {
+            width: 20%;
+            background-color: #ffbd68;
+        }
+        #right {
+            width: 80%;
+            background-color: #fff575
+        }
+        h4 {
+            color: #c48600;
+            font-size: 25px;
+            padding-left: 25px;
+        }
+        .darkyellow {
+            color: #c48600;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .blue {
+            color: #092c6d;
+        }
+        #menulist {
+            list-style: none;
+        }
+        .menuitem {
+            padding: 5px 0 5px 0;
+            color: #092c6d;
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #img1 {
+            width: 100px;
+            height: 50px;
+            padding-left: 25px;
+        }
+        #img2 {
+            width: 120px;
+            height: 70px;
+            padding-left: 15px;
+        }
+        .right {
+            padding: 0 0 0 30px;
+        }
+        h2 {
+            font-size: 50px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        p {
+            font-size: 20px;
+        }
+        h3 {
+            font-size: 32px;
+        }
+        footer {
+            background-color: #ffc300;
+        }
+        .footeritem {
+            display: inline-block;
+            font-size: 20px
+        }
+        .copyright {
+            padding-left: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header>
+            <h1>Name of Site</h1>
+        </header>
+    </div>
+    <div>
+        <table border="1">
+            <tr>
+                <td id="left">
+                    <h4 class="darkyellow">Section Title</h4>
+                    <ul menulist>
+                        <li class="menuitem blue">menu item 1</li>
+                        <li class="menuitem blue">menu item 2</li>
+                        <li class="menuitem blue">menu item 3</li>
+                        <li class="menuitem blue">menu item 4</li>
+                        <li class="menuitem blue">menu item 5</li>
+                        <li class="menuitem blue">menu item 6</li>
+                    </ul>
+                    <img id="img1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Valid_XHTML_1.0.svg/1200px-Valid_XHTML_1.0.svg.png"><br>
+                    <img id="img2" src="http://eternemedia.com/img/validating-css-w3c-2.png">
+                </td>
+                <td id="right">
+                    <h2 class="darkyellow right">An example using non-semantic mark-up</h2>
+                    <p class="right">This is one of the two sample pages created to demonstrate the difference between pages using<br>
+                        semantic HTML mark-up and those that don't</p>
+                    <h3 class="darkyellow right">What you see isn't always what you get</h3>
+                    <p class="right">If you compare this page with one using <span class="blue">semantic mark-up</span>, you won't see significant<br>
+                        differences in your browser</p>
+                    <p class="right">But what's inside can make a world of difference for accesibility, search engine<br>
+                        optimization and workflow. Read the accompanying blog entry to learn more.</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <footer>
+            <p class="footeritem copyright">&copy 2009 <span class="blue">Heidi Adams Cool</span></p>
+            <ul class="footeritem">
+                <li class="footeritem">Web Design & Strategy</li>
+                <li class="footeritem">Cleveland, OH, USA</li>
+                <li class="footeritem blue">About this site</li>
+                <li class="footeritem blue">Contact me</li>
+                <li class="footeritem blue">Search</li>
+            </ul>
+        </footer>
+    </div>
+</body>
+</html>

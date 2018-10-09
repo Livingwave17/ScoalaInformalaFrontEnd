@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Styled 2</title>
+    <style>
+        html, body {
+        margin:0;
+        padding:0;
+}
+        header {
+            text-align: center;
+            background-color: #7ce540;
+            padding: 70px 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            color: white;
+        }
+        #main {
+            background-color: #a0a0a0;
+        }
+        body {
+            background-color: #a0a0a0;
+        }
+        ul {
+            list-style: none;
+        }
+        .list {
+            background-color: #494949;
+            color: white;
+            padding: 25px 120px 25px 20px;
+            box-sizing: border-box;
+            margin: auto;
+        }
+        #menu {
+            position: absolute;
+            top: 260px;
+            left: 100px;
+        }
+        table {
+            position: absolute;
+            top: 260px;
+            left: 400px;
+        }
+        #tablehead {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #494949;
+        }
+        .td {
+            width: 900px;
+            height: 150px;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #7ce540;
+            background-color: white;
+        }
+        span {
+            padding-left: 75px
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header>FAQ Template</header>
+    </div>
+    <div id="main">
+        <div id="menu">
+            <ul>
+                <li class="list">Basics</li>
+                <li class="list">Mobile</li>
+                <li class="list">Accounts</li>
+                <li class="list">Payment</li>
+                <li class="list">Privacy</li>
+                <li class="list">Delivery</li>
+            </ul>
+        </div>
+        <div>
+            <table cellspacing="25">
+                <tr>
+                    <td id="tablehead"><h4>Basics</h4></td>
+                </tr>
+                <tr>
+                    <td class="td">
+                        <div class="dropdown">
+                            <span>How do I change password?</span>
+                            <div class="dropdown-content">
+                                    <p>Answer</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td">
+                        <div class="dropdown">
+                            <span>How do I sign up</span>
+                            <div class="dropdown-content">
+                                <p>Answer</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td">
+                        <div class="dropdown">
+                            <span>Can I remove my post?</span>
+                            <div class="dropdown-content">
+                                <p>Answer</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td">
+                        <div class="dropdown">
+                            <span>How do reviews work?</span>
+                            <div class="dropdown-content">
+                                <p>Answer</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
