@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Styled 8</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                background-image: url(https://www.businessnewsdaily.com/images/i/000/005/536/original/shutterstock_138472298.jpg?1395346391);
+                background-repeat: no-repeat;
+                background-size: cover;
+
+            }
+            img {
+                border: 3px solid gray;
+                width: 1%;
+                height: auto;
+                border-radius: 50%;
+            }
+            header {
+                padding: 25px;
+                border: 3px solid gray;
+                border-radius: 15px 15px 0 0;
+                background-color: white;
+            }
+            #container {
+                width: 70%;
+                margin: auto;
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+            #top {
+                background-color: rgba(58, 162, 242, 0.7);
+            }
+            .top {
+                padding: 15px 0 10px 60px;
+            }
+            #email {
+                background-color: rgba(150, 150, 150, 0.7);
+                padding: 30px;
+            }
+            #form {
+                padding: 30px;
+            }
+            .marginleft {
+                margin-left: 30px;
+            }
+            .bold {
+                font-weight: bold;
+            }
+            button {
+                padding: 7px 14px;
+                margin-top: 10px;
+            }
+            .bottomspan {
+                color: cadetblue;
+            }
+            .underline {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="http://www.nyc.gov/html/sbs/includes/site_images/misc/home_feature_spacer.gif">
+            <img src="http://www.nyc.gov/html/sbs/includes/site_images/misc/home_feature_spacer.gif">
+            <img src="http://www.nyc.gov/html/sbs/includes/site_images/misc/home_feature_spacer.gif">
+        </header>
+        <div id="container">
+            <div id="top">
+                <h1 class="bold top">HTML Form</h1>
+                <p class="blod top">Sign up to newsletter form below</p>
+            </div>
+            <div id="form">
+                <div id="email">
+                    <p class="bold">e-mail</p>
+                    <textarea>hello@contact.com</textarea>
+                    <p>We will send an e-mail</p>
+                </div>
+                <p class="marginleft bold">Name</p>
+                <textarea class="marginleft">First</textarea><br>
+                <textarea class="marginleft">Last</textarea>
+                <p class="marginleft bold">Prefered newsletter format</p>
+                <input class="marginleft" type="radio" name="format">Text</input><br>
+                <input class="marginleft" type="radio" name="format">HTML</input><br>
+                <button class="marginleft">Submit</button>
+                <span class="marginleft bottomspan">or <span class="bottomspan underline">Clear and start from scratch</span></span>
+            </div>
+        </div>
+    </body>
+</html>
