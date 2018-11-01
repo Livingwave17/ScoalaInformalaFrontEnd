@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+        // exercise 1
+        function compareTwoValues(value1, value2) {
+            if (value1 === value2) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        console.log("\nExercise 1:");
+        console.log(compareTwoValues("value1","value1"));
+        console.log(compareTwoValues("value1","value2"));
+
+        // exercise 2
+        function compareAndReturnNumber(value1, value2) {
+            var var1 = value1;
+            var var2 = value2;
+            if (var1 === var2) {
+                return 0;
+            } else if (var1 <= var2) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }
+        console.log("\nExercise 2:");
+        console.log(compareAndReturnNumber(10,20));
+        console.log(compareAndReturnNumber(10,10));
+        console.log(compareAndReturnNumber(20,10));
+
+        //exercise 3 
+        function returnMax(value1, value2) {
+            return Math.max(value1,value2);
+        }
+        console.log("\nExercise 3:");
+        console.log(returnMax(25,12));
+
+        //exercise 4
+        function returnMin(value1,value2) {
+            return Math.min(value1,value2);
+        }
+        console.log("\nExercise 4:");
+        console.log(returnMin(25,12));
+
+        //exercise 5
+        function sumOfNumbersUpToN(N) {
+            var sum = 0;
+            for(var i=0; i<=N; i++) {
+                sum = sum + i;
+            }
+            return sum;
+        }
+        console.log("\nExercise 5:");
+        console.log(sumOfNumbersUpToN(10));
+
+        //exercise 6
+        function estePrim(n) {
+            result = "";
+            for(var i = 2; i<n; i++) {
+                if (n%i===0) {
+                    return "nu e prim";
+                }
+            }
+            return "e prim";
+        }
+        console.log("\nExercise 6:");
+        console.log(estePrim(7));
+        console.log(estePrim(8));
+        
+        //exercise 7
+        function sumOfPrime(N) {
+            var sum=0;
+            var i=0;
+            var prim=1;
+            while (i<N) {
+                if (estePrim(prim) === "e prim") {
+                    sum = sum + prim;
+                    prim = prim + 1;
+                    i = i + 1;
+                } else {
+                    prim = prim + 1;
+                }
+            }
+            return sum;
+        }
+        console.log("\nExercise 7:");
+        console.log(sumOfPrime(2));
+        console.log(sumOfPrime(6));
+        
+        //exercise 8
+        function reverseString(string) {
+            reversed = "";
+            for(i=string.length - 1; i>=0; i--) {
+                reversed = reversed.concat(string[i]);
+            }
+            return reversed;
+        }
+        console.log("\nExercise 8:");
+        console.log(reverseString(".sdrawkcab gnidaer m'I"));
+
+        //exercise 9
+        function multiplyUnevens(N) {
+            var P = 1;
+            for (i=1; i<=N; i=i+2) {
+                P = P*i
+            }
+            return P;
+        }
+        console.log("\nExercise 9:");
+        console.log(multiplyUnevens(7));
+
+        //exercise 10
+        function searchArray(x, Arr) {
+            for (i=0; i<=Arr.length-1; i++) {
+                if (x === Arr[i]) {
+                    return x + " is in given array at index " + i;
+                }
+            }
+            return i + " was not found";
+        }
+        var A = [null, 4, true, "array", 2, true, 3, undefined, 6.5, 5];
+        console.log("\nExercise 10:");
+        console.log(searchArray(3, A));
+        console.log(searchArray(false, A));
+
+        //exercise 11
+        function maxInArray(Arr) {
+            var max = null;
+            for (i=0; i<=Arr.length-1; i++) {
+                if (max === null) {
+                    max = Arr[i];
+                } else {
+                    if (max < Arr[i]) {
+                        max = Arr[i];
+                    }
+                }
+            }
+            return max;
+        }
+        var Nums = [-2, 1, -3, 3.5, 11, 10];
+        console.log("\nExercise 11:");
+        console.log(maxInArray(Nums));
+
+        //exercise 12
+        function sumMaxMin(Arr) {
+            var max = null;
+            var min = null;
+            var sum = 0;
+            for (i=0; i<=Arr.length-1; i++) {
+                if (max === null) {
+                    max = Arr[i];
+                } else {
+                    if (max < Arr[i]) {
+                        max = Arr[i];
+                    }
+                }
+            }
+            for (i=0; i<=Arr.length-1; i++) {
+                if (min === null) {
+                    min = Arr[i];
+                } else {
+                    if (min > Arr[i]) {
+                        min = Arr[i];
+                    }
+                }
+            }
+            sum = max + min;
+            return sum;
+        }
+        function sumMaxMinBis(Arr) {
+            var min = null;
+            for (i=0; i<=Arr.length-1; i++) {
+                if (min === null) {
+                    min = Arr[i];
+                } else {
+                    if (min > Arr[i]) {
+                        min = Arr[i];
+                    }
+                }
+            }
+            sum = min + maxInArray(Arr);
+            return sum;
+        }
+        //var Nums = [-2, 1, -3, 3.5, 11, 10];
+        console.log("\nExercise 12:");
+        console.log(sumMaxMin(Nums));
+        console.log("\nExercise 12 bis:");
+        console.log(sumMaxMinBis(Nums));
+
+        //exercise 13
+        function checkDuplicates(Arr) {
+            for (i=0; i<=Arr.length-1; i++) {
+                var check = Arr[i];
+                for (j=i+1; j<=Arr.length-1; j++) {
+                    if (check === Arr[j]) {
+                        return "the array has duplicates";
+                    }
+                }
+            }
+            return "the array has NO duplicates";
+        }
+        //var A = [null, 4, true, "array", 2, true, 3, undefined, 6.5, 5];
+        console.log("\nExercise 13:");
+        console.log(checkDuplicates(A));
+        console.log(checkDuplicates(Nums));
+
+        //exercise 14
+        function multiplyPositives(Arr) {
+            var P = 1;
+            for (i=0; i<Arr.length; i++) {
+                if (Arr[i] > 0) {
+                    P = P*Arr[i];
+                }
+            }
+            return P;
+        }
+        //var Nums = [-2, 1, -3, 3.5, 11, 10];
+        console.log("\nExercise 14:");
+        console.log(multiplyPositives(Nums));
+
+        //exercise 15
+        function checkPalindromeString(string) {
+            for (i=0; i<string.length; i++) {
+                if (string.charAt(i) !== string.charAt(string.length-1-i)) {
+                    return "Given string is NOT Palindrome";
+                }
+            }
+            return "Given string is Palindrome";
+        }
+        console.log("\nExercise 15:");
+        console.log(checkPalindromeString("1234321"));
+        console.log(checkPalindromeString("1234567"));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
