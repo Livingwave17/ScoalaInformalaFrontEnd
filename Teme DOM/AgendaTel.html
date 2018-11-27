@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <style>
+        .absent {
+            display: none;
+        }
+        .containers {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: yellow;
+            border-radius: 10px;
+            text-align: center;
+        }
+        input:nth-of-type(3) {
+            padding: 10px;
+            border-radius: 7px;
+            background-color: mediumblue;
+            color: white;
+        }
+        table {
+            margin: auto;
+            width: 60%;
+        }
+        .top {
+            font-weight: bold;
+        }
+        .clickable {
+            color: blueviolet;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        var contacts = [
+            {
+                nume: "Nergal",
+                telefon: "666"
+            },
+            {
+                nume: "Dr. House",
+                telefon: "911"
+            }
+        ]
+        var indexEditare = -1;
+        function drawContacts() {
+            var str = "";
+            var tabel = document.getElementById("agenda");
+            var tablebody = document.getElementById("Tabel").innerHTML;
+            for (var i = 0; i < contacts.length; i++) {
+                str += `
+                        <tr>
+                          <td>${contacts[i].nume}</td>
+                            <td>${contacts[i].telefon}</td>
+                            <td><span class="clickable" onclick="editContact(${i})">Modifica</span></td>
+                            <td><span class="clickable" onclick="deleteContact(${i})">Sterge</span></td>
+                          </tr>
+                          `
+            }
+            document.getElementById("Tabel").innerHTML = str;
+            console.log(str)
+            if (str === '') {
+                tabel.classList.add("absent")
+            } else {
+                tabel.classList.remove("absent")
+            }
+        }
+        function addContact(f, event) {
+            event.preventDefault();
+            var contact = {}
+            var inputs = f.querySelectorAll("input[name]");
+            for (var i = 0; i < inputs.length; i++) {
+                var key = inputs[i].getAttribute("name");
+                var value = inputs[i].value;
+                contact[key] = value;
+            }
+            if (indexEditare === -1) {
+                contacts.push(contact);
+            } else {
+                contacts.splice(indexEditare, 1, contact);
+                indexEditare = -1;
+            }
+            drawContacts();
+            f.reset();
+        }
+        function deleteContact(idx) {
+            contacts.splice(idx, 1);
+            drawContacts();
+        }
+        function editContact(idx) {
+            var contact = contacts[idx]
+            console.log(contact)
+            var inputs = document.querySelectorAll("input[name]")
+            for (var i = 0; i < inputs.length; i++) {
+                var key = inputs[i].getAttribute("name");
+                inputs[i].value = contact[key];
+            }
+            indexEditare = idx;
+        }
+    </script>
+</head>
+<body onload="drawContacts()">
+    <div class="containers">
+        <h1>Agenda</h1>
+        <form onsubmit="addContact(this, event)">
+            <span>Nume:</span><input type="text" name="nume">
+            <span>Telefon:</span><input type="number" name="telefon"><br><br>
+            <input type="submit" value="adaugaContact">
+        </form>
+    </div>
+    <div class="containers" id="agenda">
+        <table>
+            <thead>
+                <tr>
+                    <td class="top">Nume</td>
+                    <td class="top">Telefon</td>
+                </tr>
+            </thead>
+            <tbody id="Tabel">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
