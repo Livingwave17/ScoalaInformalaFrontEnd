@@ -1,0 +1,36 @@
+body{
+    background-color:darkseagreen;
+}
+table{
+    width: 85%;
+    margin: auto;
+}
+h1 {
+    display: inline;
+}
+.butonel {
+    border-radius: 10%;
+    border: none;
+    color: white;
+    background-color: red;
+    padding: 10px;
+    margin-left: 40px;
+}
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+.nume {
+    font-weight: bold;
+    font-size: 20px;
+}
+.row {
+    padding: 10px;
+}
+#contact{
+    background-color: cornflowerblue;
+}
+#searchButton{
+    background-color: mediumpurple;
+    margin:0;
+}

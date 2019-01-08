@@ -1,0 +1,67 @@
+body{
+    background-color: skyblue;
+}
+#inputs {
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    background-color: white;
+}
+#vreme {
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    background-color: white;
+}
+#city {
+    margin-left: 10px;
+    width: 60%;
+}
+button {
+    color: white;
+    background-color: dodgerblue;
+    padding: 5px;
+    border: 0;
+    border-radius: 5px;
+    margin: 7px 7px 7px 90px;
+}
+#image {
+    height: 10px;
+    width: 10px;
+}
+#map {
+    margin: auto;
+    border-radius: 5px;
+    background-color: white;
+}
+.inline{
+    display: inline-block;
+    margin: 10px;
+    width: 48%;
+}
+.headers {
+    margin: 10px;
+}
+#forecast {
+    width: 80%;
+    margin: auto;
+    background-color: white;
+}
+#prognosis {
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+.day {
+    width: 16%;
+}
+.hourly {
+    height: 120px;
+}
+.bleu {
+    background-color: dodgerblue;
+    padding: 3px;
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body {
+				background-color:#c487fc;
+			}
+			#container {
+				width: 50%;
+				background-color: white;
+				border-radius: 25px;
+				padding: 25px;
+				margin: auto;
+				text-align: center;
+			}
+			table {
+				margin: auto;
+			}
+			.buton {
+				border-radius: 5px;
+				padding: 5px; 
+			}
+			.sort {
+				background-color: #c487fc;
+			}
+			.mark{
+				background-color: coral;
+			}
+			#submitable{
+				padding: 10px;
+				background-color:mediumseagreen;
+			}
+			.bought {
+				text-decoration: line-through;
+			}
+			.buttonBought {
+				background-color: green;
+			}
+		</style>
+		<script>
+            var items =[];
+			var indexEditare = -1
+
+            function getList() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        items = Object.values(JSON.parse(this.responseText));
+                        console.log(items);
+                        drawList();
+                    }
+                }
+                xhttp.open("GET", "https://shopping-list-firebase-e7cd6.firebaseio.com/.json", true)
+                xhttp.send();
+            }
+			
+            function drawList() {
+				var stringy = "";
+				for (var i in items) {
+					var cut = "";
+					if (items[i].checked === true) {
+						cut = "bought";
+					}
+					stringy += `<tr>
+									<td><span class="${cut}"id="${i}">${items[i].itemDescription}</span></td>
+									<td>
+										<button class="buton mark" onclick="check(this, ${i});">Mark as bought</button>
+									</td>
+								</tr>`
+				}
+				document.querySelector("tbody").innerHTML = stringy;
+			}
+
+			function sortAsc(coloana){
+				items.sort(function (a,b){
+					if(a[coloana]>b[coloana]){
+						return 1;
+					}
+					if(a[coloana]<b[coloana]){
+						return -1;
+					}
+					return 0;
+				});
+				drawList();
+			}
+
+			function sortDesc(coloana){
+				items.sort(function (a,b){
+					if(a[coloana]>b[coloana]){
+						return -1;
+					}
+					if(a[coloana]<b[coloana]){
+						return 1;
+					}
+					return 0;
+				});
+				drawList();
+			}
+
+			function check(buton, i) {
+				if (items[i].checked === true) {
+					items[i].checked = false;
+					buton.innerHTML = 'Mark as bought';
+				} else {
+					items[i].checked = true;
+					buton.innerHTML = 'Mark as NOT bought';
+				}
+				drawList(items);
+			}
+
+			function addItem(t,event){
+				event.preventDefault();
+				var item = {};
+				var inputs = t.querySelectorAll("input[name]");
+				for(var i=0;i<inputs.length;i++){
+					var a = inputs[i].getAttribute("name");
+					var v = inputs[i].value;
+					item[a] = v;
+				}
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						getList();
+					}
+				}
+				xhttp.open("POST", "https://shopping-list-firebase-e7cd6.firebaseio.com/.json",true);
+				xhttp.send(JSON.stringify(item));
+				t.reset();
+			}
+        </script>
+    </head>
+	<body onload="getList()">
+		<div id="container">
+		<h1>SHOPPING LIST</h1>
+        <form onsubmit="addItem(this, event)">
+            <input name="itemDescription" type="text" placeholder="Nume" />
+            <input class="buton" id="submitable" type="submit" value="Add Item" >
+		</form>
+		<table class="element">
+			<thead>
+				<tr>
+					<td><button  class="buton sort" onclick="sortAsc('itemDescription');">Sort asc</button></td>
+					<td><button  class="buton sort" onclick="sortDesc('itemDescription');">Sort desc</button></td>
+				</tr>
+				<tr>
+					<td>Item Description</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+		</div>
+	</body>
+</html>

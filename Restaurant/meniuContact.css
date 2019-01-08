@@ -1,0 +1,31 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color:darkseagreen;
+}
+h1 {
+    display: inline;
+}
+.butonel {
+    border-radius: 10%;
+    border: none;
+    color: white;
+    background-color: red;
+    padding: 10px;
+}
+#map {
+    height: 750px;
+    width: 85%;
+    margin: auto;
+}
+table{
+    width: 85%;
+    margin: auto;
+}
+#left{
+    width: 80%;
+}
+#right{
+    width: 20%;
+}

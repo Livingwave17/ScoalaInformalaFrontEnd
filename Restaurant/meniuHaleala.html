@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meniu</title>
+    <link href="./meniuHaleala.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="meniuHaleala.js"></script>
+</head>
+<body onload="getMeniu()">
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <td colspan="2"><h1>Cald si Bun</h1></td>
+                <td><a href="meniuContact.html"><button class="butonel" id="contact">Contact</button></a></td>
+            </tr>
+            <tr>
+                <td><input id="searchable" type="text"></td>
+                <td><button class="butonel" id="searchButton" onclick="deseneazaMeniu()">Cauta in ingrediente</button></td>
+            </tr>
+        </thead>
+        <tbody id="meniu">
+
+        </tbody>
+    </table>
+</body>
+</html>

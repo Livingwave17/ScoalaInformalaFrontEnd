@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="./weatherApp.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="WeatherApp.js"></script>
+</head>
+<body>
+    <div id="inputs">
+        <input id="city" type="text"><button onclick="getVreme()">Afiseaza Vremea</button><button onclick="getForecast()">Afiseaza Prognoza</button>
+    </div>
+    <div id="vreme">
+        <h3 class="headers">Vremea Acum</h3><hr><br>
+        <div class="inline">
+            <img id="icon" src=""><br>
+            <span>Descriere: </span><span id="Descriere"></span><br>
+            <span>Umiditate: </span><span id="Umiditate"></span><br>
+            <span>Presiune: </span><span id="Presiune"></span><br>
+            <span>Temperatura curenta: </span><span id="Temp"></span><br>
+            <span>Maxima Zilei: </span><span id="TempMax"></span><br>
+            <span>Minima Zilei: </span><span id="TempMin"></span><br>
+        </div>
+        <div id="map" class="inline">
+                
+        </div>
+    </div>
+    <div id="forecast">
+        <h3 class="headers">Vremea in urmatoarele zile</h3><hr><br>
+        <div id="prognosis">
+            <div class="day" id="prognosis1"></div>
+            <div class="day" id="prognosis2"></div>
+            <div class="day" id="prognosis3"></div>
+            <div class="day" id="prognosis4"></div>
+            <div class="day" id="prognosis5"></div>
+            <div class="day" id="prognosis6"></div>
+        </div>
+    </div>
+</body>
+</html>
