@@ -1,11 +1,11 @@
 [
 				{
-					"itemDescription":"Pikalar"
+					"itemDescription":"mere"
 				},
 				{
-					"itemDescription":"Algorithm"
+					"itemDescription":"paine"
 				},
 				{
-					"itemDescription":"Vector"
+					"itemDescription":"oua"
 				}
 			]

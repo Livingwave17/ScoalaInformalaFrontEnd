@@ -1,10 +1,10 @@
 [
             {
-                "nume": "Nergal",
-                "telefon": "666"
+                "nume": "X",
+                "telefon": "112"
             },
             {
-                "nume": "Dr. House",
+                "nume": "Y",
                 "telefon": "911"
             }
         ]
