@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            border: 0;
+            background-color: chartreuse;
+        }
+        #lista_elevi_wrapper{
+            width: 100%;
+            height: 700px;
+            background-color:chartreuse;
+            display: inline-block;
+        }
+        #lista_note_wrapper{
+            width: 49%;
+            height: 725px;
+            background-color: cadetblue;
+            display: none;
+        }
+        .hidden{
+            display: none;
+        }
+        #tabelNote{
+            margin-left: 45%;
+            display: none;
+        }
+        .highlightGreen{
+            background-color: green;
+        }
+        .form{
+            border: 1px solid black;
+            margin: 15px 0 15px 0;
+        }
+    </style>
+    <script>
+        var elevi = [];
+        var idx = 0
+        var note = [];
+        function getListaDeNote(instance) {
+            return instance._listaDeNote;
+        }
+
+        class Elev{
+            constructor(numeElev, listaDeNote, average) {
+                this.numeElev = numeElev; //public
+                this._listaDeNote = listaDeNote; //private
+                this.average = average
+            }
+        }
+
+        function addElev() {
+            event.preventDefault();
+            var elev = new Elev(`${document.getElementById("nume").value}`, [], 0)
+            elevi[idx] = elev;
+            /*var str = `<tr>
+                <td>${elevi[idx].numeElev}</td>
+                <td>${getMedie(idx)}</td>
+                <td><button onclick="veziNote(${idx})">Vezi Notele</button></td>
+            </tr>`;
+            document.getElementById("tbody").innerHTML += str;*/
+            drawElevi();
+            idx += 1;
+        }
+        function drawElevi(){
+            var str = "";
+            for (var i = 0; i<elevi.length; i++){
+                str += `<tr>
+                <td>${elevi[i].numeElev}</td>
+                <td>${getMedie(i)}</td>
+                <td><button onclick="veziNote(${i})">Vezi Notele</button></td>
+            </tr>`;
+            }
+            console.log(elevi);
+            document.getElementById("tbody").innerHTML = str;
+            document.getElementById("noElevi").classList.add("hidden");
+            document.getElementById("tabelElevi").classList.remove("hidden");
+        }
+
+        function veziNote(idx){
+            drawNote(idx)
+            document.getElementById("lista_note_wrapper").style.display = "inline-block";
+            document.getElementById("lista_elevi_wrapper").style.width = "50%";
+            document.getElementById("posesorNote").innerHTML = `Note Elev: ${elevi[idx].numeElev}`
+            document.getElementById("addNota").innerHTML = `<button onclick="addNota(${idx})">Adauga Nota</button>`
+        }
+        function ascundeNote(){
+            document.getElementById("lista_note_wrapper").style.display = "none";
+            document.getElementById("lista_elevi_wrapper").style.width = "100%";
+        }
+        function addNota(idx){
+            event.preventDefault();
+            elevi[idx]._listaDeNote.push(document.getElementById("nota").value);
+            document.getElementById("nonote").classList.add("hidden")
+            drawElevi();
+            drawNote(idx);
+        }
+        function drawNote(idx){
+            var str = "";
+            note = elevi[idx]._listaDeNote;
+            for (var i in note){
+                str += `<tr>
+                    <td class="centered">${note[i]}</td>
+                </tr>`
+            }
+            document.getElementById("note").innerHTML = str;
+            if (document.getElementById("note").innerHTML !== ""){
+                document.getElementById("tabelNote").style.display = "block"
+                document.getElementById("sortAsc").innerHTML=`<span class="highlightGreen" onclick="sortNoteAsc(${idx})">Sorteaza ascendent notele</span>`
+                document.getElementById("sortDesc").innerHTML=`<span class="highlightGreen" onclick="sortNoteDesc(${idx})">Sorteaza ascendent notele</span>`
+
+            } else {
+                document.getElementById("tabelNote").style.display = "none"
+            }
+        }
+        function getMedie(idx){
+            var sum = 0;
+            var note = elevi[idx]._listaDeNote;
+            var medie;
+            for (var i in note){
+                sum += parseInt(note[i]);
+            }
+            if (sum === 0){
+                return "";
+            }
+            medie = sum/note.length;
+            elevi[idx].average = medie;
+            return medie
+        }
+        function sortMediiAsc(){
+            elevi.sort(function(a, b){
+                if(a.average>b.average){
+					return 1;
+				}
+				if(a.average<b.average){
+					return -1;
+				}
+				return 0;
+            });
+            drawElevi();
+        }
+        function sortMediiDesc(){
+            elevi.sort(function(a, b){
+                if(a.average<b.average){
+					return 1;
+				}
+				if(a.average>b.average){
+					return -1;
+				}
+				return 0;
+            });
+            drawElevi();
+        }
+        function sortNoteAsc(idx){
+            note.sort(function(a, b){
+                if(a>b){
+					return 1;
+				}
+				if(a<b){
+					return -1;
+				}
+				return 0;
+            });
+            console.log(note);
+            drawNote(idx);
+        }
+        function sortNoteDesc(idx) {
+            note.sort(function(a, b){
+                if(a<b){
+					return 1;
+				}
+				if(a>b){
+					return -1;
+				}
+				return 0;
+            });
+            console.log(note);
+            drawNote(idx);
+        }
+    </script>
+</head>
+<body>
+    <div id="lista_elevi_wrapper">
+        <h3>Lista Elevi</h3>
+        <form class="form" onsubmit="addElev()">
+            <span>Nume: </span><input type="text" id="nume"><input type="submit" value="Adauga Elev">
+        </form>
+        <div>
+            <span class="highlightGreen" onclick="sortMediiAsc()">Sorteaza dupa medie note ascendent</span><br>
+            <span class="highlightGreen" onclick="sortMediiDesc()">Sorteaza dupa medie note descendent</span><br>
+            <span id="noElevi">Nici-un elev adaugat</span>
+            <table id="tabelElevi" class="hidden" border="1">
+                <thead>
+                    <td>Nume Elev</td>
+                    <td>Medie Note</td>
+                    <td></td>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="lista_note_wrapper" class="hidden">
+        <button onclick="ascundeNote()">Ascunde Notele</button>
+        <h3 id="posesorNote"></h3>
+        <!--<form id="formNote" onsubmit="addNota(0)">
+            <span>Nota: </span><input type="text" id="nota"><input type="submit" value="Adauga nota">
+        </form>-->
+        <div id="form">
+            <span>Nota: </span><input type="text" id="nota"><span id="addNota"></span>
+        </div>
+        <div id="divNote">
+            <span class="highlightGreen" id="sortAsc">Sorteaza ascendent notele</span><br>
+            <span class="highlightGreen" id="sortDesc">Sorteaza descendent notele</span><br>
+            <span id="nonote">Nici-o nota adaugata</span><br>
+            <table id="tabelNote">
+                <thead>
+                    <tr>
+                        <td class="centered"><strong>Nota</strong></td>
+                    </tr>
+                </thead>
+                <tbody id="note">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
