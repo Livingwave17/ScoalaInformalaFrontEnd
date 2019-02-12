@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="project.css" />
+    <script type="text/javascript" src="project.js"></script>
+</head>
+<body onload="getProducts('cart')">
+    <div id="loading" class="hidden">
+        <img id="loading-image" src="https://cdn.dribbble.com/users/493970/screenshots/1691794/progress.gif">
+    </div>
+    <div id="products" class="hidden content">
+        <div id="cart" class="content center">
+            <div class="head-menu cartElement">
+                <a href="./project.html" class="headElement"><button>Home</button></a>
+                <a href="./admin.html" class="headElement"><button>Admin</button></a>
+            </div>
+            <span class="center cartElement">Shopping Cart</span><br><br>
+            <span id="emptyCart">Your shopping cart is empty</span>
+            <table id="cartTable" class="content hiddenWhenEmpty">
+                <thead>
+                    <tr>
+                        <td><span>Name</span></td>
+                        <td><span>Price</span></td>
+                        <td><span>Quantity</span></td>
+                        <td><span>Subtotal</span></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody id="cartBody">
+
+                </tbody>
+            </table>
+            <div class="center cartElement hiddenWhenEmpty">
+                <span id="counter"></span>
+                <span id="total"></span><br>
+                <button onclick="checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <div id="transaction" class="hidden content center">
+        <span>Your transaction is complete!</span><br>
+        <button onclick="checkoutRedirect()">OK</button>
+    </div>
+</body>
+</html>
